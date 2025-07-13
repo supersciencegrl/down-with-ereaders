@@ -1,0 +1,16 @@
+[
+  {
+    "id": 1,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "regexSubstitution": "https://\\1/doi/pdf/\\3"
+      }
+    },
+    "condition": {
+      "regexFilter": "^https://([^/]+)/doi/(epdf|epub|reader)/(.+)$",
+      "resourceTypes": ["main_frame"]
+    }
+  }
+]

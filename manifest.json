@@ -1,0 +1,31 @@
+{
+  "manifest_version": 3,
+  "name": "Piss off again, publisher frames",
+  "version": "1.0",
+  "description": "Redirects epdf, epub, and reader urls to pdf",
+  
+  // Permissions for network interception and mapping to any url
+  "permissions": ["declarativeNetRequest"],
+  "host_permissions": ["*://*/*"],
+  
+  // Load rules for network redirects
+  "declarative_net_request": {
+    "rule_resources": [
+      {
+        "id": "ruleset_1",
+        "enabled": true,
+        "path": "rules.json"
+      }
+    ]
+  },
+  
+  // Load content script for any page with "doi" in the url
+  "content_scripts": [
+    {
+	  "matches": ["*://*/doi/*"], // Any page with "doi" in the url
+	  "js": ["content.js"],
+	  // Run the script as early as possible – before other js is loaded
+	  "run_at": "document_start"
+	}
+  ]
+}
